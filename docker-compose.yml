@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  bw-listener:
+    container_name: bw-listener
+    image: bw-listener
+    build: ./
+    ports:
+      - "8083:8083"
+    expose:
+      - "8083"
+    networks:
+      esnet:
+
+  bw-listener-standalone:
+    container_name: bw-listener-standalone
+    image: bw-listener-standalone
+    build: ./
+    ports:
+      - "8083:8083"
+    expose:
+      - "8083"
+    networks:
+      esnet:
+    environment:
+      - "SPRING_PROFILES_ACTIVE=standalone"
+
+volumes:
+  esdata1:
+    driver: local
+
+networks:
+  esnet:
+    driver: bridge
