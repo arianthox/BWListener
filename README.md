@@ -1,6 +1,8 @@
 # BWListener
 ===========================================
 
+The purpose of this project is to provide a realtime process based on a Fourier transform algorithm to discard noisy brainwaves. 
+
 Technologies
 ------------
 
