@@ -48,9 +48,8 @@ pipeline {
 
   }
   post {
-          always {
-  	          slackNotifier(currentBuild.currentResult)
-              cleanWs()
-          }
+      always {
+         slackNotifier(currentBuild.currentResult)
+      }
   }
 }
