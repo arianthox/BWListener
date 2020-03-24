@@ -49,7 +49,7 @@ pipeline {
   }
   post {
       always {
-         slackNotificator.notify(buildResult: currentBuild.currentResult)
+         slackNotificator(currentBuild.currentResult)
       }
   }
 }
