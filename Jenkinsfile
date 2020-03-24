@@ -1,3 +1,6 @@
+/* import shared library */
+@Library('jenkins-shared-library')_
+
 pipeline {
   environment {
       registry = "brainwaves/bwlistener"
@@ -43,5 +46,11 @@ pipeline {
       }
     }
 
+  }
+  post {
+          always {
+  	          slackNotifier(currentBuild.currentResult)
+              cleanWs()
+          }
   }
 }
