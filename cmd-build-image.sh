@@ -1,2 +1,2 @@
 ./cmd-clean-build.sh
-docker build . -t bw-listener
+docker build . -t labs.globant.com/brainwaves/bw-listener
