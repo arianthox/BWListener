@@ -1,63 +1,41 @@
 # BWListener
-===========================================
 
-The purpose of this project is to provide a realtime process based on a Fourier transform algorithm to discard noisy brainwaves. 
+## Overview
 
-Technologies
-------------
+Legacy service intended for realtime noise-filtering of brainwave data.
 
-+ java
-+ Spring
-+ docker
-+ gradle
+## Scope in BrainWaves
 
-Prerequisites
---------------
-You will need Docker in order to successfully run this project.
+- In-scope conceptually (maps to cleaner stage)
+- Current code appears mostly service scaffolding; full stream wiring may be incomplete
 
-https://docs.docker.com/install/
+## Tech Stack
 
+- Java 11
+- Spring Boot 2.2.x
+- Spring Cloud (Eureka client)
+- Gradle
 
-How To Compile
---------------
+## Build
 
-The service can be compiled with:
-
-```
-gradlew clean build
+```bash
+./gradlew clean build
 ```
 
-How To Build the Docker Image
---------------
+## Run
 
-Use this command to build the docker image:
-
-```
-docker build . -t bw-listener
+```bash
+./gradlew bootRun
 ```
 
-Use this command to build the standalone (whitout eureka registration) docker image:
+## Key Configuration / Integration
 
-```
-docker-compose build bw-listener-standalone
-```
+- Config file: `src/main/resources/application.yml`
+- Important keys:
+  - `server.port`
+  - `spring.application.name`
+  - `eureka.client.service-url.defaultZone`
 
-How To start docker compose
---------------
+## Status / Notes
 
-The service can be initiated with:
-
-```
-docker-compose up bw-listener
-```
-
-Or
-
-```
-docker-compose up bw-listener-standalone
-```
-
-How To get Access
---------------
-
-http://localhost:8083/swagger-ui.html
+- Target mapping in new architecture: `brainwaves.raw.v1 -> brainwaves.cleaned.v1`.
